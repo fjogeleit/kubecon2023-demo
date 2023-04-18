@@ -1,0 +1,15 @@
+adapters:
+  vulnerabilityReports:
+    enabled: true
+  configAuditReports:
+    enabled: true
+  complianceReports:
+    enabled: false
+  rbacAssessmentReports:
+    enabled: false
+  exposedSecretReports:
+    enabled: false
+  infraAssessmentReports:
+    enabled: false
+  clusterInfraAssessmentReports:
+    enabled: true

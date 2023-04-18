@@ -1,0 +1,64 @@
+image:
+  tag: 2.14.4
+
+target:
+  loki:
+    host: http://loki.monitoring:3100
+    minimumPriority: "warning"
+    customLabels:
+      cluster: minikube
+      event: kubecon2023
+
+  slack:
+    secretRef: 'webhook-general'
+    minimumPriority: warning
+    filter:
+      namespaces:
+        exclude: ['trivy-system', 'kube-system']
+        
+    channels:
+    - name: Kyverno Violations
+      secretRef: 'webhook-kyverno'
+      sources:
+      - kyverno
+      filter:
+        policies:
+          include: ['disallow-privilege-escalation']
+        namespaces:
+          exclude: ['kube-system']
+
+    - name: Trivy Violations
+      secretRef: 'webhook-trivy'
+      sources: ['Trivy ConfigAudit', 'Trivy Vulnerability']
+      filter:
+        namespaces:
+          exclude: ['kube-system']
+
+    - name: Kube System Violations
+      secretRef: 'webhook-kube-system'
+      filter:
+        namespaces:
+          include: ['kube-system']
+
+metrics:
+  enabled: true
+  mode: custom
+  customLabels: ["namespace", "policy", "status", "source"]
+
+kyvernoPlugin:
+  enabled: true
+
+monitoring:
+  enabled: true
+  grafana:
+    namespace: monitoring
+    dashboards:
+      enabled: true
+  serviceMonitor:
+    labels:
+      release: monitoring
+
+ui:
+  enabled: true
+  plugins:
+    kyverno: true

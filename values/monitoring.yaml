@@ -1,0 +1,6 @@
+nodeExporter:
+  enabled: false
+kubeStateMetrics:
+  enabled: false
+alertmanager:
+  enabled: false
