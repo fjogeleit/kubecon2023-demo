@@ -74,8 +74,10 @@ helm upgrade --install policy-reporter policy-reporter/policy-reporter --create-
 ### Policy Reporter UI
 
 ```bash
-
+kubectl port-forward service/policy-reporter-ui 8082:8080 -n policy-reporter
 ```
+
+Open: [http://localhost:8082](http://localhost:8082)
 
 ### Grafana
 
@@ -87,3 +89,5 @@ Password: `prom-operator`
 ```bash
 kubectl port-forward service/monitoring-grafana 3000:80 -n monitoring
 ```
+
+Open: [http://localhost:3000](http://localhost:3000)
