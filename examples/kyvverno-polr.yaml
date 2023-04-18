@@ -1,0 +1,32 @@
+apiVersion: wgpolicyk8s.io/v1alpha2
+kind: PolicyReport
+metadata:
+  labels:
+    app.kubernetes.io/managed-by: kyverno
+    cpol.kyverno.io/disallow-host-ports: "1860"
+  name: cpol-disallow-host-ports
+  namespace: test
+results:
+- category: Pod Security Standards (Baseline)
+  message: validation rule 'host-ports-none' passed.
+  policy: disallow-host-ports
+  resources:
+  - apiVersion: v1
+    kind: Pod
+    name: nginx
+    namespace: test
+    uid: 75aa8b6f-2803-4f44-af73-d0da8cd2cc00
+  result: pass
+  rule: host-ports-none
+  scored: true
+  severity: medium
+  source: kyverno
+  timestamp:
+    nanos: 0
+    seconds: 1681839266
+summary:
+  error: 0
+  fail: 0
+  pass: 1
+  skip: 0
+  warn: 0

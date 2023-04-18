@@ -1,13 +1,12 @@
 image:
-  tag: 2.14.4
+  tag: 2.14.5
 
 target:
   loki:
     host: http://loki.monitoring:3100
     minimumPriority: "warning"
     customLabels:
-      cluster: minikube
-      event: kubecon2023
+      location: kubecon2023
 
   slack:
     secretRef: 'webhook-general'
