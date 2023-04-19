@@ -1,9 +1,6 @@
 apiVersion: wgpolicyk8s.io/v1alpha2
 kind: PolicyReport
 metadata:
-  labels:
-    app.kubernetes.io/managed-by: kyverno
-    cpol.kyverno.io/disallow-host-ports: "1860"
   name: cpol-disallow-host-ports
   namespace: test
 results:

@@ -2,6 +2,9 @@
 
 Live Example: Policy Reporter UI ([http://88.99.188.190:30582](http://88.99.188.190:30582))
 
+![Policy Reporter UI - Demo IP](https://raw.githubusercontent.com/fjogeleit/kubecon2023-demo/main/qrcode.png)
+
+
 ## Monitoring
 
 ### Repositories
